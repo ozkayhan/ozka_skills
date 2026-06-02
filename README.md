@@ -34,7 +34,7 @@ This repository serves as my playground and permanent home for custom AI agent s
 
 If you want to reach out, discuss agent integrations, or check out my other work:
 - **Github:** [github.com/ozkayhan](https://github.com/ozkayhan)
-- **Email:** [contact@ozkayhan.com](mailto:contact@ozkayhan.com)
+- **Email:** [oguzayhan@metu.edu.tr](mailto:oguzayhan@metu.edu.tr)
 
 ---
 
