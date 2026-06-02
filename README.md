@@ -1,54 +1,43 @@
-# 🌌 Ozka Custom Agent Skills Library
+# 🌌 Ozka's Custom Agent Skills
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Open--Source-Premium-00E5FF?style=for-the-badge&logo=github&logoColor=black" alt="Open Source Premium" />
-  <img src="https://img.shields.io/badge/License-MIT-white?style=for-the-badge" alt="MIT License" />
-  <img src="https://img.shields.io/badge/Scale-100+%20Skills-purple?style=for-the-badge" alt="Scalability" />
+  <img src="https://img.shields.io/badge/Catalog-Personal-00E5FF?style=for-the-badge&logo=github&logoColor=black" alt="Personal Catalog" />
+  <img src="https://img.shields.io/badge/Owner-Oğuz%20Kerem%20Ayhan-white?style=for-the-badge" alt="Owner" />
+  <img src="https://img.shields.io/badge/License-MIT-purple?style=for-the-badge" alt="MIT License" />
 </p>
 
-Welcome to the **Ozka Custom Agent Skills Library**! This repository is a premium, open-source workspace designed to store, manage, and document custom-built agent skills. 
+Welcome to my personal agent skills catalog! This repository is a curated library of highly specialized, premium skills developed by me to enhance and supercharge my AI agent experiences.
 
-The structure is optimized for **infinite scaling**, allowing you to add hundreds of custom skills while keeping code runtimes clean and documentation comprehensive.
-
----
-
-## 📐 Project Architecture
-
-To ensure speed and neatness, code execution files are kept isolated from verbose user documentation:
-
-```mermaid
-graph TD
-    Root[📁 ozka_skills]
-    Root --> SkillsDir[📁 skills /active runtime/]
-    Root --> DocsDir[📁 docs /explanations & diagrams/]
-    
-    SkillsDir --> SkillA[📁 askhtml]
-    SkillA --> SKILLA_MD[📄 SKILL.md /trigger metadata/]
-    SkillA --> SKILLA_JS[📄 askhtml.js /code logic/]
-    
-    DocsDir --> DocA[📄 askhtml.md /detailed user manual/]
-```
+This is a **private, personal catalog** built for my workflows. As such, external contributions are not accepted.
 
 ---
 
-## ⚡ Skill Inventory
+## ⚡ Active Skills
 
-Below is a summary of all custom skills currently available in this library. Click on the links to explore the code or read the detailed explanation manuals.
+Here is the current lineup of custom skills running in my agent system:
 
-| Skill | Trigger / Command | Problems Solved | Code | Explanation |
-| :--- | :--- | :--- | :--- | :--- |
-| **AskHTML** | `[prompt] /askhtml` | Turns generic AI chat prompts into beautiful interactive HTML forms, streamlining data collection with structured JSON outputs. | [Code Directory](file:///Users/oka/Documents/work/ozka_skills/skills/askhtml) | [Detail Manual](file:///Users/oka/Documents/work/ozka_skills/docs/askhtml.md) |
+### 📋 AskHTML
+* **Trigger:** Add `/askhtml` at the end of any prompt.
+* **What it solves:** Typing structured data (like forms, 50-option choices, priorities, ratings) in a chat box is slow and buggy.
+* **The solution:** It automatically spins up a premium AMOLED-themed HTML form in your browser, lets you fill it out dynamically, and copies the clean structured JSON directly to your clipboard so you can paste it back to the agent.
+* **Runtimes & Docs:** [Code Directory](file:///Users/oka/Documents/work/ozka_skills/skills/askhtml) | [Detailed Manual](file:///Users/oka/Documents/work/ozka_skills/docs/askhtml.md)
 
 ---
 
-## 🛠️ Adding Your Own Skills
+## 👤 About Me
 
-Adding a new skill is extremely easy. The repository is configured to hold hundreds of personalized skills.
+I am **Oğuz Kerem Ayhan**. I build custom developer workflows, integrations, and intelligent automation systems. 
 
-For detailed guidelines on folders, naming conventions, and template requirements, please refer to the [Contributing Guide](file:///Users/oka/Documents/work/ozka_skills/CONTRIBUTING.md).
+This repository serves as my playground and permanent home for custom AI agent skills that make daily interactions faster, cleaner, and structured.
+
+### 📬 Contact & Connect
+
+If you want to reach out, discuss agent integrations, or check out my other work:
+- **Github:** [github.com/ozkayhan](https://github.com/ozkayhan)
+- **Email:** [contact@ozkayhan.com](mailto:contact@ozkayhan.com)
 
 ---
 
 ## ⚖️ License
 
-This project is licensed under the MIT License. See the [LICENSE](file:///Users/oka/Documents/work/ozka_skills/LICENSE) file for details.
+Licensed under the MIT License. See the [LICENSE](file:///Users/oka/Documents/work/ozka_skills/LICENSE) file for details.

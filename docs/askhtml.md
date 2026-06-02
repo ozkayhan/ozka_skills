@@ -1,105 +1,105 @@
-# 📋 AskHTML Detaylı Açıklama ve Kullanım Kılavuzu
+# 📋 AskHTML Detailed Documentation & User Manual
 
-`askhtml` yeteneği (skill), yapay zeka ile etkileşimlerinizde yapılandırılmış (structured) veri toplama süreçlerini tamamen değiştirmek ve hızlandırmak amacıyla tasarlanmıştır.
-
----
-
-## 🎯 Amacı ve Çözdüğü Sorunlar
-
-Yapay zeka modelleriyle çalışırken büyük veri listeleri, çoktan seçmeli tercihler, anketler veya karmaşık form verilerini doldurmak oldukça zahmetlidir. Sohbet satırına uzun uzun yazmak, imla hatalarına veya AI'ın formatı yanlış anlamasına yol açar.
-
-**AskHTML bu sorunu nasıl çözer?**
-- Sohbet arayüzünü geçici olarak **görsel bir web formuna** dönüştürür.
-- Kullanıcıya hatasız, hızlı ve akıcı bir veri giriş deneyimi sunar.
-- Form doldurulduğunda otomatik olarak panoya kopyalanan temiz bir **JSON** çıktısı üretir.
-- Geliştiricinin veya AI modelinin doğrudan okuyabileceği standartta çıktı sağlar.
+The `askhtml` skill is designed to completely transform and accelerate how you gather structured data during AI agent interactions.
 
 ---
 
-## 📊 Karşılaştırma: Standart Sohbet vs. AskHTML
+## 🎯 Purpose & Solved Problems
 
-| Özellik | Standart Sohbet Girişi | AskHTML Deneyimi |
+When working with LLMs, filling out large lists of choices, ratings, surveys, or complex form data can be incredibly tedious. Typing everything directly into the chat bar is slow, error-prone, and often misunderstood by the model.
+
+**How AskHTML solves this:**
+- Temporarily transforms the conversation into a **visual web form**.
+- Delivers an error-free, rapid, and fluid data entry experience.
+- Produces a clean **JSON** output that is automatically copied to your clipboard when the form is submitted.
+- Ensures structured, machine-readable inputs that the agent can immediately process.
+
+---
+
+## 📊 Comparison: Standard Chat Input vs. AskHTML
+
+| Feature | Standard Chat Input | AskHTML Experience |
 | :--- | :--- | :--- |
-| **Giriş Hızı** | Yavaş (her şeyi klavyeden yazmak gerekir) | Çok Hızlı (tıklamalar, kaydırma ve seçimler) |
-| **Hata Payı** | Yüksek (imla hataları, eksik parametreler) | Sıfır (HTML form validasyonları ve şablonlar) |
-| **Veri Yapısı** | Düz metin (AI'ın metni ayrıştırması gerekir) | Doğrudan yapılandırılmış JSON çıktısı |
-| **Büyük Seçenek Setleri** | 50 seçeneği yazarak seçmek imkansızdır | Arama ve çoklu seçim arayüzleri ile saniyeler sürer |
-| **Kullanıcı Arayüzü** | Monoton chat kutusu | AMOLED siyah temalı, modern ve şık mobil uyumlu UI |
+| **Input Speed** | Slow (requires typing everything manually) | Extremely Fast (clicks, scrolls, and selections) |
+| **Error Rate** | High (typos, formatting errors, omissions) | Zero (HTML form validations and structured schemas) |
+| **Data Structure** | Plain text (requires parsing by the AI) | Direct structured JSON payload |
+| **Large Selection Sets** | Impractical to select from e.g., 50 options | Done in seconds using search and multi-select grids |
+| **User Interface** | Monotonous chat input box | AMOLED-black, premium, responsive mobile-friendly UI |
 
 ---
 
-## 🗺️ Çalışma Mantığı ve Akış Şeması
+## 🗺️ How it Works (Workflow Diagram)
 
-Aşağıdaki diyagramda `askhtml` yeteneğinin tetiklenmesinden JSON çıktısının alınmasına kadar olan süreç adım adım gösterilmiştir:
+The flowchart below displays the step-by-step process from triggering the skill to retrieving the JSON payload:
 
 ```mermaid
 flowchart TD
-    A[Kullanıcı İstemi + /askhtml] --> B[Executor: Prompt Analizi]
-    B --> C{Anahtar Kelime Eşleşmesi?}
-    C -->|Seçim/Listeleme| D[Tip 1: Multiple Choice]
-    C -->|Anlat/Açıkla| E[Tip 2: Open-Ended]
-    C -->|Derecelendir/Puanla| F[Tip 3: Likert/Rating]
-    C -->|İsim/E-posta/Form| G[Tip 4: Form Fields]
-    C -->|Sırala/Öncelik| H[Tip 5: Ranking]
-    C -->|Diğer Durumlar| I[Diğer Şablonlar 6-12]
+    A[User Prompt + /askhtml] --> B[Executor: Prompt Analysis]
+    B --> C{Keyword Match?}
+    C -->|Select/Choose| D[Type 1: Multiple Choice]
+    C -->|Explain/Describe| E[Type 2: Open-Ended]
+    C -->|Rate/Scale| F[Type 3: Likert/Rating]
+    C -->|Name/Email/Form| G[Type 4: Form Fields]
+    C -->|Rank/Order| H[Type 5: Ranking]
+    C -->|Other| I[Other Templates 6-12]
     
-    D & E & F & G & H & I --> J[Şablona Uygun HTML Dosyası Üret]
-    J --> K[Varsayılan Tarayıcıda Aç open/xdg-open]
-    K --> L[Kullanıcı Formu Doldurur]
-    L --> M[Done Butonuna Basılır]
-    M --> N[Veriler JSON Formatına Dönüştürülür]
-    N --> O[Pano Clipboard üzerine kopyalanır ve Toast Bildirim Gösterilir]
-    O --> P[Kullanıcı JSON'ı Chate Yapıştırır]
+    D & E & F & G & H & I --> J[Generate HTML File based on Template]
+    J --> K[Open in Default Browser open/xdg-open]
+    K --> L[User Fills Out Form]
+    L --> M[User Clicks Done Button]
+    M --> N[Convert Data to JSON String]
+    N --> O[Copy to Clipboard & Show Success Toast]
+    O --> P[User Pastes JSON into Chat]
 ```
 
 ---
 
-## 🛠️ Teknik Şablonlar ve JSON Yapıları
+## 🛠️ Supported Form Types & JSON Schemas
 
-Sistem toplamda **12 farklı soru tipini** otomatik olarak algılayabilir:
+The system automatically detects **12 different question types** based on prompt context:
 
-### 1. Çoktan Seçmeli (Multiple Choice)
-- **Tetikleyici kelimeler:** `choose`, `select`, `pick`, `option`, `list of`
-- **Çıktı Formatı:**
+### 1. Multiple Choice
+- **Keywords:** `choose`, `select`, `pick`, `option`, `list of`
+- **Output Schema:**
   ```json
   {
     "selection": ["option_0", "option_2"]
   }
   ```
 
-### 2. Açık Uçlu (Open-Ended)
-- **Tetikleyici kelimeler:** `describe`, `explain`, `tell me`, `opinion`
-- **Çıktı Formatı:**
+### 2. Open-Ended
+- **Keywords:** `describe`, `explain`, `tell me`, `opinion`
+- **Output Schema:**
   ```json
   {
-    "response": "Kullanıcının detaylı açıklaması buraya gelir..."
+    "response": "Detailed text feedback from the user goes here..."
   }
   ```
 
-### 3. Likert / Derecelendirme (Likert Scale)
-- **Tetikleyici kelimeler:** `rate`, `rating`, `satisfaction`, `1-5`, `scale`
-- **Çıktı Formatı:**
+### 3. Likert / Rating
+- **Keywords:** `rate`, `rating`, `satisfaction`, `1-5`, `scale`
+- **Output Schema:**
   ```json
   {
     "rating": 4
   }
   ```
 
-### 4. Form Alanları (Form Fields)
-- **Tetikleyici kelimeler:** `name`, `email`, `phone`, `collect`, `contact`
-- **Çıktı Formatı:**
+### 4. Form Fields
+- **Keywords:** `name`, `email`, `phone`, `collect`, `contact`
+- **Output Schema:**
   ```json
   {
-    "name": "Ahmet Yılmaz",
-    "email": "ahmet@example.com",
-    "message": "Merhaba!"
+    "name": "John Doe",
+    "email": "john.doe@example.com",
+    "message": "Hello!"
   }
   ```
 
 ---
 
-## 💡 İpuçları ve En İyi Pratikler
+## 💡 Tips & Best Practices
 
-1. **Pop-up Engelleyiciler:** Form otomatik olarak tarayıcınızda yeni sekmede açılacaktır. Eğer açılmazsa tarayıcınızın pop-up engelleyicisini kontrol edin veya terminalde basılan dosya yolunu (`/tmp/askhtml_form_*.html`) manuel olarak açın.
-2. **Klavye Navigasyonu:** Formlar erişilebilirlik standartlarına uygun olarak tasarlanmıştır. `Tab` ile alanlar arasında gezinebilir, seçenekleri seçebilir ve formu kolayca doldurabilirsiniz.
-3. **Tekrar Gönderim:** Formda bir hata yaptıysanız, sekmeyi kapatmadan bilgileri güncelleyip tekrar **Done** butonuna basarak panonuzu güncelleyebilirsiniz.
+1. **Pop-up Blockers:** The form will automatically open in a new tab in your default browser. If it doesn't open, verify your browser's pop-up settings or manually open the path (`/tmp/askhtml_form_*.html`) printed in your terminal.
+2. **Keyboard Navigation:** The forms fully comply with accessibility standards. You can use the `Tab` key to navigate between form fields, make selections, and press Enter to copy/submit.
+3. **Resubmission:** If you made a mistake on a form, you don't need to close the tab. Simply correct the information and click the **Done** button again to update your clipboard.
